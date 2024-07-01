@@ -69,7 +69,7 @@ public class FlipfitGymOwnerDAOImpl implements FlipFitGymOwnerDAOInterface {
         ResultSet resultSet = null;
         PreparedStatement preparedStatement = null;
         conn = DatabaseConnector.getConnection();
-
+      System.out.println("check"+flipFitGymOwner.getPAN());
 
         try {
             statement = conn.createStatement();
@@ -83,8 +83,8 @@ public class FlipfitGymOwnerDAOImpl implements FlipFitGymOwnerDAOInterface {
             preparedStatement.setString(3, flipFitGymOwner.getPassword());
             preparedStatement.setString(4, flipFitGymOwner.getPhoneNo());
             preparedStatement.setString(5, flipFitGymOwner.getPAN());
-            preparedStatement.setString(6, flipFitGymOwner.getGST());
-            preparedStatement.setString(7,flipFitGymOwner.getNationalId());
+            preparedStatement.setString(7, flipFitGymOwner.getGST());
+            preparedStatement.setString(6,flipFitGymOwner.getNationalId());
             preparedStatement.setString(8, flipFitGymOwner.getStatus());
 
             int rowsInserted = preparedStatement.executeUpdate();

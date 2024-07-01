@@ -1,6 +1,8 @@
 
 package com.flipkart.model;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import java.util.List;
 
 public class FlipFitGymOwner {
@@ -9,8 +11,10 @@ public class FlipFitGymOwner {
     private String password;
     private String phoneNo;
     private String nationalId;
+    @JsonProperty("gst")
     private String GST;
     private List<FlipFitGym> flipFitGyms;
+    @JsonProperty("pan")
     private String PAN;
     private String ownerName;
     private String status;

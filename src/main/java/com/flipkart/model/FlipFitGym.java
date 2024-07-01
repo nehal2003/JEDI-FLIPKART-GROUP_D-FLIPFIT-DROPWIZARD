@@ -1,14 +1,17 @@
 
 package com.flipkart.model;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import java.util.List;
 
 public class FlipFitGym {
     private int gymId; 
     private String gymName; 
     private String gymAddress; 
-    private String location; 
-    private List<FlipFitSlots> flipFitSlots; 
+    private String location;
+    @JsonProperty("flipfitslot")
+    private List<FlipFitSlots> flipFitSlots;
     private String ownerId; 
     private String status; 
 

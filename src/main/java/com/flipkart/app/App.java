@@ -33,7 +33,7 @@ public class App extends Application<Configuration> {
         e.jersey().register(new HelloController());
         e.jersey().register(new AdminController(new FlipFitAdminServiceOperation()));
         e.jersey().register(new CustomerController(new FlipFitUserServiceOperations()));
-        e.jersey().register(new GymOwnerController());
+        e.jersey().register(new GymOwnerController(new FlipFitGymOwnerServiceOperation()));
     }
 
     public static void main(String[] args) throws Exception {

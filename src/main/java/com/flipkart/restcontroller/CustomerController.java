@@ -27,6 +27,7 @@ public class CustomerController {
     @Consumes(MediaType.APPLICATION_JSON)
     @Path("/login")
     public Response login(Credentials credentials){
+        System.out.println(credentials.getUser()+credentials.getPassword());
         if(userServices.validateUser(credentials.getUser(),credentials.getPassword())){
             return Response.ok("Login Successful").build();
         }
@@ -46,13 +47,16 @@ public class CustomerController {
 
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
-    @Path("bookSlot/gymId/{id}/time/{time}/email/{email}")
+    @Path("/bookSlot/gymId/{id}/time/{time}/email/{email}")
     public Response bookSlot(@PathParam("id") Integer gymId, @PathParam("time") Integer time,@PathParam("email") String email){
         System.out.println(gymId + " " + time + " " + email);
         boolean booked = userServices.bookSlots(gymId, time, email);
         if(booked)
             return Response.ok().build();
-        else return Response.status(Response.Status.NOT_FOUND).build();
+        else {
+            System.out.println("Booking Unsuccessful!!");
+            return Response.status(Response.Status.NOT_FOUND).build();
+        }
     }
 
     @DELETE
@@ -74,17 +78,6 @@ public class CustomerController {
 //            return Response.ok(myBookings).build();
 //        else return Response.status(Response.Status.NOT_FOUND).build();
         return myBookings;
-    }
-
-    @GET
-    @Produces(MediaType.APPLICATION_JSON)
-    @Path("/viewAllGymsByArea/{area}")
-    public List<FlipFitGym> viewAllGymsByArea(@PathParam("area") String area){
-        List<FlipFitGym> gymList = userServices.getAllGymsByArea(area);
-//        if(gymList != null)
-//            return Response.ok(gymList).build();
-//        else return Response.status(Response.Status.NOT_FOUND).build();
-        return gymList;
     }
 
     @POST

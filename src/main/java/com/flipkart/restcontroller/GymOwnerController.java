@@ -17,8 +17,7 @@ public class GymOwnerController {
     Validator validator;
     FlipFitGymOwnerService gymOwnerService;
 
-    public GymOwnerController() {
-        this.validator = validator;
+    public GymOwnerController(FlipFitGymOwnerServiceOperation gymOwnerService) {
         this.gymOwnerService = gymOwnerService;
     }
 
@@ -26,16 +25,22 @@ public class GymOwnerController {
     @Consumes(MediaType.APPLICATION_JSON)
     @Path("/login")
     public Response login(Credentials credentials){
+        System.out.println(credentials.getUser()+credentials.getPassword());
         if(gymOwnerService.validateLogin(credentials.getUser(), credentials.getPassword())){
+            System.out.println("Login Successful");
             return Response.ok().build();
         }
-        else return Response.status(Response.Status.UNAUTHORIZED).build();
+        else{
+            System.out.println("Login Unsuccessful");
+            return Response.status(Response.Status.UNAUTHORIZED).build();
+        }
     }
 
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     @Path("/addgymwithslots")
     public Response addGymWithSlots(FlipFitGym gym){
+        System.out.println(gym.getSlots()+" Kk");
         gymOwnerService.addGymWithSlots(gym);
         return Response.ok().build();
     }

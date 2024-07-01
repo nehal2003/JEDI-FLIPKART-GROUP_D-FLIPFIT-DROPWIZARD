@@ -10,12 +10,13 @@ public class FlipFitSlots {
     private int startTime; // Start time of the slot
     private int seatCount; // Number of available seats in the slot
 
-    /**
-     * Constructor to initialize FlipFitSlots object with given values.
-     * @param slotsId Unique identifier for the slot
-     * @param startTime Start time of the slot
-     * @param seatCount Number of available seats in the slot
-     */
+//    /**
+//     * Constructor to initialize FlipFitSlots object with given values.
+//     * @param slotsId Unique identifier for the slot
+//     * @param startTime Start time of the slot
+//     * @param seatCount Number of available seats in the slot
+//     */
+    public FlipFitSlots() {};
     public FlipFitSlots(int slotsId, int startTime, int seatCount) {
         this.setSlotsId(slotsId);
         this.setStartTime(startTime);

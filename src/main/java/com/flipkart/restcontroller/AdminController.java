@@ -42,6 +42,7 @@ public class AdminController {
         String admin_password = "admin123";
 
         if (credentials.getUser().equals(admin_id) && credentials.getPassword().equals(admin_password)){
+            System.out.println("Admin logged in");
             return Response.ok().build();
         }
        else

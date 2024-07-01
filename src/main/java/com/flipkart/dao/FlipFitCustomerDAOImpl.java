@@ -233,15 +233,15 @@ public class FlipFitCustomerDAOImpl implements FlipFitCustomerDAOInterface {
     }
 
     @Override
-    public boolean validateUser(String username, String pass) {
+    public boolean validateUser(String userName, String pass) {
         conn = DatabaseConnector.getConnection();
         PreparedStatement preparedStatement = null;
         ResultSet resultSet = null;
 
         try {
-            String sqlQuery = "SELECT password FROM User WHERE email = ?";
+            String sqlQuery = "SELECT password FROM User WHERE userName = ?";
             preparedStatement = conn.prepareStatement(sqlQuery);
-            preparedStatement.setString(1, username);
+            preparedStatement.setString(1, userName);
 
             resultSet = preparedStatement.executeQuery();
 
